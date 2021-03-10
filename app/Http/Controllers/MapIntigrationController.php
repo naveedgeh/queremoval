@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class MapIntigrationController extends Controller
 {
     public function Booking(Request $request){
-        
+            $valiation=$request->validate([
+                        'pickup'=>'required',
+                        'dropoff'=>'required'
+            ]);
+            if($valiation==false){
+                return back();
+            }
         $pickup=$request->input('pickup');
         $dropoff=$request->input('dropoff');
         $dist=0;

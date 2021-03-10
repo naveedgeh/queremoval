@@ -1,122 +1,61 @@
+// This example creates a 2-pixel-wide red polyline showing the path of
+// the first trans-Pacific flight between Oakland, CA, and Brisbane,
+// Australia which was made by Charles Kingsford Smith.
 
-
-function initMap(loc1=null){
-  let map;
-  let markersArray = [];
-  let markers=[];
-  var locationss = [];
-  let polyline = null;
-  let long=[];
-  let pickup=$("#pickup").val();
-  let dropoff=$("#dropoff").val();
-  if(loc1!=null){
-    setMapOnAll(null);
-    markers=[];
-   
-
-  
-    // console.log( JSON.stringify(markers[0]) );
-
-    // setMapOnAll(null);                  // Clear all markers from the map
-
-    // var tempArray = markers;            // Create a temporary array
-    // unset( tempArray[index] );          // Unset the marker to remove
-    // markers = array_values(tempArray);
-  }
+function initMap() {
   $("#map").css({ "height": "427px", "width": "100%" });
-  
-    // $(".location").each(function () {
-       
-    //     var location = $(this).val()
-    //     locationss.push(location);
-    // });
-    $("#pickup").keydown(function(){
-      $(this).val('');
-      markers.setMap(null);
-      
-   });
-    if(pickup!=''){
-      var geocoder = new google.maps.Geocoder(); 
-      geocoder.geocode({
-        'address':pickup,
-      },function(results,status) {
-          if(status==google.maps.GeocoderStatus.OK){
-            latitude=results[0].geometry.location.lat();
-            langitude=results[0].geometry.location.lng();
-          }
-          var options={
-            zoom:5,
-            center:{
-            lat:latitude,
-            lng:langitude
+  var geocoder = new google.maps.Geocoder();
+  var locationss = [];
+  let flightPlanCoordinates = [];
+  $(".location").each(function () {
+      var location = $(this).val()
+      locationss.push(location);
+  });
+
+  locationss.map((a,index)=>{
+    let latlng={};
+    geocoder.geocode({
+        'address': a,
+
+    }, function (results, status) {
+     
+        if (status == google.maps.GeocoderStatus.OK) {
+
+          latitude = results[0].geometry.location.lat();
+          longitude = results[0].geometry.location.lng();
+          latlng.lat=latitude;
+          latlng.lng=longitude;
+          flightPlanCoordinates.push(latlng);
+          var options = {
+            zoom: 5,
+            center: {
+                lat: flightPlanCoordinates[index].lat,
+                lng: flightPlanCoordinates[index].lng
             }
-          }
-          map = new google.maps.Map(document.getElementById('map'),options);
-          let marker = new google.maps.Marker({
-                                map: map,
-                                position:{lat:latitude,lng:langitude},
-                                draggable:true,
-                            });
-  
-                  markers.push(marker);
+
+        };
+        var map = new google.maps.Map(document.getElementById('map'), options);
+       flightPlanCoordinates.map(mak=>{
+        const marker = new google.maps.Marker({
+          position: {
+              lat: mak.lat,
+              lng: mak.lng
+          },
+          map: map,
       });
-    }
-    
-    
-    
-
-//    console.log(locationss);
-    // for (let i = 0; i < locationss.length; i++) {
-    //     long[i] = [];
-
-    //     geocoder.geocode({
-    //         'address': locationss[i],
-
-    //     }, function (results, status) {
-                
-    //         if (status == google.maps.GeocoderStatus.OK) {
-
-    //             latitude = results[0].geometry.location.lat();
-    //             longitude = results[0].geometry.location.lng();
-
-    //             long[i][0] = latitude;
-    //             long[i][1] = longitude;
-    //             var options = {
-    //                 zoom: 5,
-    //                 center: {
-    //                     lat: long[i][0],
-    //                     lng: long[i][1]
-    //                 }
-
-    //             };
-    //             var map = new google.maps.Map(document.getElementById('map'), options);
-            
-    //             for (let index = 0; index < long.length; index++) {
-    //                 lat1=long[index][0];
-    //                 lng1=long[index][1];
-    //                 // let marker = new google.maps.Marker({
-    //                 //     map: map,
-    //                 //     position: latLng,
-    //                 //     draggable: true
-    //                 // });
-                    
-    //                 let marker = new google.maps.Marker({
-    //                     map: map,
-    //                     position:{lat:long[index][0],lng:long[index][1]},
-    //                     draggable: false,
-    //                 });
-    //                 markers.push(marker);
-    //                   marker.addListener('position_changed', function() {
-    //                     drawPolyline();
-    //                   });
-    //                 //drawPolyline(); 
-                
-    //                   //store the marker object drawn in global array
-    //                   markersArray.push(marker);
-    //                 //console.log(markersArray);
-    //             }
-
-    //         }
-    //     });
-    // }
+      const flightPath = new google.maps.Polyline({
+            path: flightPlanCoordinates,
+            geodesic: true,
+            strokeColor: "#FF0000",
+            strokeOpacity: 1.0,
+            strokeWeight: 3,
+          });
+        
+          flightPath.setMap(map);
+       });
+        
+        }
+        
+      });
+});
 }

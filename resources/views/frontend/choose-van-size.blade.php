@@ -3,7 +3,7 @@
 
 
 @section('mainbody')
-<div class="container" style="width: 655px;">
+<div class="container mx-cont">
 @includeif('frontend.forms.form1')
 @includeif('frontend.forms.form2')
 @includeif('frontend.forms.form3')

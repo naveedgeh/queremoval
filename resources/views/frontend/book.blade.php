@@ -30,19 +30,19 @@
                         <div class="content-wrap">
                             <div class="container clearfix">
             ​
-                                <div class="row">
+                                <div class="row _mx12d">
             ​
                                     <div class="col-lg-6 col-md-6">
                                      <form action="{{url('/choose-van-size')}}" method="post">
                                          @csrf
-                                        <label>Pickup Point <span style="font-size:9px;">Click Below to Eidt Address</span></label>
-                                        <input type="text" id="pickup" name="pickup"value="{{$pickup}}" class="required sm-form-control location valid">
+                                        <label>Pickup Point <span style="font-size:9px;"></span></label>
+                                        <input type="text" id="pickup" readonly name="pickup"value="{{$pickup}}" class="required sm-form-control location valid">
                                         <div id="picklocationbooking1">
 												
                                         </div>
                                         <br>
-                                        <label>Dropoff Point <span style="font-size:9px;">Click Below to Eidt Address</span></label>
-                                        <input type="text" id="dropoff" name="dropoff" value="{{$dropoff}}" class="required sm-form-control location valid">
+                                        <label>Dropoff Point <span style="font-size:9px;"></span></label>
+                                        <input type="text" id="dropoff" readonly name="dropoff" value="{{$dropoff}}" class="required sm-form-control location valid">
                                         <div id="picklocationbooking2">
 												
                                         </div>
@@ -50,7 +50,7 @@
                                         <p style="font-size:14px;"><i style="color:grey;font-size:15px;" class="icon-truck1"></i> <strong>Distance:</strong>{{ number_format($distance,2)}} Miles </p>
             ​                             <input type="hidden" id="bprice" name="dist" value="{{number_format($distance?$distance:'0',2)}}">
                                         
-                                     <button style="width:100%;" class="button button-3d m-0" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Send Message</button>
+                                     <button style="width:100%;" class="button button-3d m-0" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Get Quote</button>
                                     <br><br>
                                         <p>Que removal Ltd is an expert in the removal industry. We don’t just provide a van and a driver; we provide an experienced removal expert who will ensure that everything runs smoothly for you.</p>
             </form>
@@ -69,7 +69,7 @@
             ​
                             </div>
             ​
-                            <div class="section m-0">
+                        <div class="section m-0">
                                 <div class="container clearfix">
             ​
                                     <div class="row col-mb-50">
@@ -101,7 +101,7 @@
                                     </div>
             ​
                                 </div>
-                            </div>
+                        </div>
             ​
                         
                         
@@ -112,6 +112,9 @@
 
 
 @section('jquery')
+
+
+<script src="{{asset('js/functions.js')}}"></script>
 
 <script src="{{asset('mx/googlemap.js')}}" defer></script>
 {{-- AIzaSyByT-mReCNBwnAGACdpXf3FTFOLn7tdA2M --}}

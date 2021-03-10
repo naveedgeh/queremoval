@@ -3,6 +3,7 @@
 <head>
 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width" />
 	<meta name="author" content="SemiColonWeb" />
 
 	<!-- Stylesheets
@@ -78,7 +79,7 @@
 						</div>
 
 						<div class="header-misc">
-							<a style="background-color:black;" href="contact.html" data-scrollto="#section-price" data-offset="60" class="button button-light text-dark font-weight-semibold">Contact Us</a>
+							<a style="background-color:black;" href="{{url('contact')}}" data-scrollto="#section-price" data-offset="60" class="button button-light text-dark font-weight-semibold">Contact Us</a>
 						</div>
 
 						<!-- Primary Navigation
@@ -95,8 +96,8 @@
 								
 							<li class="menu-item"><a class="menu-link" href=""><div>Services</div></a>
 									<ul class="sub-menu-container">
-										<li class="menu-item"><a class="menu-link" href="home-removals.html">Home Removals</a></li>
-										<li class="menu-item"><a class="menu-link" href="office-moves.html">Office Moves</a></li>
+										<li class="menu-item"><a class="menu-link" href="{{url('/homeremoval')}}">Home Removals</a></li>
+										<li class="menu-item"><a class="menu-link" href="{{url('/office-moves')}}">Office Moves</a></li>
 									
 									</ul>
 								</li>
@@ -150,25 +151,39 @@
 
 
 										<div class="col-sm-12 input-group form-group">
+											
 										<div class="input-group-prepend">
 												<span class="input-group-text bg-color text-white"><i class="icon-truck1"></i></span>
-											</div>
+										</div>
+										
 											<input type="text" name="pickup" id="pickuplocation" placeholder="Pick up Location" class="form-control location"/>
+										
 											<div id="picklocation">
 												
 											</div>
 											</div>
-
+											<span class="error"> 
+												@error('pickup')
+													{{$message}}
+												@enderror
+											</span>
 											
 												<div class="col-sm-12 input-group form-group">
+													
 												<div class="input-group-prepend">
 												<span class="input-group-text bg-color text-white"><i class="icon-truck1"></i></span>
 											</div>
 											<input type="text" name="dropoff" id="droplocation" placeholder="Drop off Location" class="form-control location"/>
+											
 											<div id="dropofflocation">
 												
 											</div>
 											</div>
+											<span class="error"> 
+												@error('dropoff')
+													{{$message}}
+												@enderror
+											</span>
 										<div class="col-12">
 											<input type="submit" name="home-moving-form-submit" id="findprice" class="btn bg-color text-white font-weight-medium btn-block py-2 mt-2" value="Find Prices">
 										</div>
@@ -958,9 +973,9 @@
 
 	<!-- Footer Scripts
 	============================================= -->
-	{{-- <script src="{{asset('js/functions.js')}}"></script> --}}
+
 	<script src="{{asset('mx/ms.js')}}"></script>
-	<!-- <script>
+	 <script>
 
 		jQuery(document).ready(function() {
 
@@ -1081,7 +1096,7 @@
 
 		});
 
-	</script> -->
+	</script> 
 	@section('jquery')
 		
 	@show

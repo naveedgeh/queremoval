@@ -18,12 +18,12 @@
 <div class="_liffwdr12">
     <label class="label">
      With Lift
-        <input type="radio" name="left2" checked class="_radioqwx">
+        <input type="radio" name="dropofleft" value="With Lift" checked class="_radioqwx">
         <span class="checkmark"></span>
       
     </label>
     <label class="label"> Without Lift
-     <input type="radio" class="_radioqwx"  name="left2">
+     <input type="radio" class="_radioqwx" value="Without Lift"  name="dropofleft">
      <span class="checkmark"></span>
     
  </label>

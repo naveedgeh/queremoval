@@ -78,14 +78,15 @@
       $("#driver17").click(function(){
         let v=$(this).data('v');
         $("#extrahelp5").val(v);
-        var final=final=price?price+10:final;
-        $("#price5").html(`£ ${final<price?price+10:final}`);
+        let ppppp={{$twoxlvantwomenprice}};
+        var final=final=price?price+ppppp:final;
+        $("#price5").html(`£ ${final<price?price+ppppp:final}`);
         $("#bprice5").val(final);
       });
       $("#driver18").click(function(){
         let v=$(this).data('v');
         $("#extrahelp5").val(v);
-        var final=final=price?price+20:final;
+        var final=final=price?price+{{$twoxlvanthremenprice}}:final;
         $("#price5").html(`£ ${final}`);
         $("#bprice5").val(final);
       });

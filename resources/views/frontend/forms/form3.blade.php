@@ -77,14 +77,15 @@
       });
       $("#driver9").click(function(){
         let v=$(this).data('v');
-        var final=final=price?price+10:final;
-        $("#price3").html(`£ ${final<price?price+10:final}`);
+        let pp={{$lvantwomenprice}};
+        var final=final=price?price+pp:final;
+        $("#price3").html(`£ ${final<price?price+pp:final}`);
         $("#bprice3").val(final);
         $("#extrahelp3").val(v);
       });
       $("#driver10").click(function(){
         let v=$(this).data('v');
-        var final=final=price?price+20:final;
+        var final=final=price?price+{{$lvanthremenprice}}:final;
         $("#price3").html(`£ ${final}`);
         $("#bprice3").val(final);
         $("#extrahelp3").val(v);

@@ -16987,3 +16987,38 @@ top: 113px !important;
 	font-size: 20px;
 	height: 400px;
   }
+  .error{
+    color:red;
+	margin-top:-10px;
+	margin-left:12px;
+}
+.mx-cont{
+	width:50%;
+}
+
+@media only screen and (max-width: 768px) {
+	.mx-cont{
+		width:100%;
+	}
+	.mx-cont .price{
+		font-size:15px!important;
+	}
+	.mx-cont .van-img{
+		margin-top:20px;
+	}
+	.p-5{
+		padding:0px!important;
+	}
+	._invent123 button{
+		position: relative!important;
+		top: -80px!important;
+		left: 200px!important;
+	}
+	._liffwdr12 {
+		margin-left: 42px;
+		margin-top: 30px;
+	}
+	._mx12d{
+		margin-top:-80px;
+	}
+  }

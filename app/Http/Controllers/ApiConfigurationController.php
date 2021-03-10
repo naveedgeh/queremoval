@@ -12,7 +12,7 @@ class ApiConfigurationController extends Controller
         $arr=[];
          $loction=$request->input("query");
         $response = Http::get('https://services.postcodeanywhere.co.uk/Capture/Interactive/Find/v1.10/json3.ws?', [ 
-            'Key' => "YE68-EA49-RK55-ME94",
+            'Key' => "JJ57-AA46-CE74-NF26",
             'Text'=> $loction,
             'IsMiddleware'=> "fale",
             'Container' => "",
@@ -24,7 +24,7 @@ class ApiConfigurationController extends Controller
      //   dd($res)    ;
             if($response['Items'][0]["Type"]=="Postcode"){
             $res = Http::get('https://services.postcodeanywhere.co.uk/Capture/Interactive/Find/v1.10/json3.ws?', [
-                    'Key' => "YE68-EA49-RK55-ME94",
+                    'Key' => "JJ57-AA46-CE74-NF26",
                     'Text'=>"",
                     'IsMiddleware'=> "fale",
                     'Container' =>$response['Items'][0]["Id"],

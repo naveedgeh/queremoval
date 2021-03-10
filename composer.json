@@ -9,11 +9,15 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "cartalyst/stripe-laravel": "^13.1",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "laravel/cashier": "^12.9",
         "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "paypal/rest-api-sdk-php": "*",
+        "stripe/stripe-php": "^7.75"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

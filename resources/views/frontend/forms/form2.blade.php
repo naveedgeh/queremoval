@@ -77,14 +77,15 @@
       });
       $("#driver5").click(function(){
         let v=$(this).data('v');
-        var final=final=price?price+10:final;
-        $("#price2").html(`£ ${final<price?price+10:final}`);
+        let ppp={{$medtwomenprice}};
+        var final=final=price?price+ppp:final;
+        $("#price2").html(`£ ${final<price?price+ppp:final}`);
         $("#bprice2").val(final);
         $("#extrahelp1").val(v);
       });
       $("#driver6").click(function(){
         let v=$(this).data('v');
-        var final=final=price?price+20:final;
+        var final=final=price?price+{{$medthremenprice}}:final;
         $("#price2").html(`£ ${final}`);
         $("#bprice2").val(final);
         $("#extrahelp1").val(v);

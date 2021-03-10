@@ -60,7 +60,7 @@
   @push('javascript')
         <script>
    $(document).ready(function(){
-      var price={{$largevan}};
+      var price={{$xlvanluton}};
       let final=price;
       $("#driver11").click(function(){
         let v=$(this).data('v');
@@ -79,14 +79,15 @@
       $("#driver13").click(function(){
         let v=$(this).data('v');
         $("#extrahelp4").val(v);
-        var final=final=price?price+10:final;
-        $("#price4").html(`£ ${final<price?price+10:final}`);
+        let pppp={{$xlvantwomenprice}};
+        var final=final=price?price+pppp:final;
+        $("#price4").html(`£ ${final<price?price+pppp:final}`);
         $("#bprice4").val(final);
       });
       $("#driver14").click(function(){
         let v=$(this).data('v');
         $("#extrahelp4").val(v);
-        var final=final=price?price+20:final;
+        var final=final=price?price+{{$xlvanthremenprice}}:final;
         $("#price4").html(`£ ${final}`);
         $("#bprice4").val(final);
       });
