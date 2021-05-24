@@ -17,7 +17,7 @@ class AdminLoginController extends Controller
         return view('admin/login');
     }
     public function Login(Request $request){
-       
+    //    dd(Hash::make("queremoval"));
         $validated = $request->validate([
         	'username' => 'required',
         	'password' => 'required',

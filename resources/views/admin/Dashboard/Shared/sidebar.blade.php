@@ -28,6 +28,24 @@
             <p>Vehical Price Add</p>
           </a>
         </li>
+        <li>
+          <a href="{{route('addpriceadd')}}">
+            <i class="nc-icon nc-caps-small"></i>
+            <p>Additional Stop Price</p>
+          </a>
+        </li>
+        <li>
+          <a href="{{route('addpriceaddfull')}}">
+            <i class="nc-icon nc-caps-small"></i>
+            <p>Full Pack Price</p>
+          </a>
+        </li>
+        <li>
+          <a href="{{route('ViewDetails')}}">
+            <i class="nc-icon nc-caps-small"></i>
+            <p>View Details</p>
+          </a>
+        </li>
        
         <li class="active-pro">
           <a href="{{url('/logout')}}">

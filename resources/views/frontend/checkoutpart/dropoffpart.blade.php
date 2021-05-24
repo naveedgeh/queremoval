@@ -1,7 +1,7 @@
 <h3>Stairs At Dropoff Address</h3>
-<p>Triple F F F Brewing Co, Unit 3, Station Approach, Four Marks, ALTON, GU34 5HN</p>
+<p>{{$hiddenfielsdata["dropoff"]}}</p>
 <div class="_drff2ed">
-    <select name="dropoffpart" class="_slectqwe">
+    {{-- <select name="dropoffpart" class="_slectqwe">
         <option value="Ground Floor">Ground Floor</option>
         <option value="1 Floor">1 Floor</option>
         <option value="2 Floor">2 Floor</option>
@@ -13,7 +13,12 @@
         <option value="8 Floor">8 Floor</option>
         <option value="9 Floor">9 Floor</option>
         <option value="10 Floor">10 Floor</option>
-    </select>
+    </select> --}}
+    <div class="_135z1af" style="margin-bottom:20px;">
+        <input type="hidden" name="dropoffpart" id="dropoffpart">
+        <span class="_lml8zl" id="floordecreement">-</span>
+        <p class="_nhy7p3" id="floor"></p><span class="_lml8zl" id="floorincreement">+</span>
+    </div>
 </div>
 <div class="_liffwdr12">
     <label class="label">
@@ -23,7 +28,7 @@
       
     </label>
     <label class="label"> Without Lift
-     <input type="radio" class="_radioqwx" value="Without Lift"  name="dropofleft">
+     <input type="radio" class="_radioqwx" checked id="withoutlift" value="Without Lift"  name="dropofleft">
      <span class="checkmark"></span>
     
  </label>

@@ -1,7 +1,7 @@
 <div class="main-box">
     <div class="mx-van-box collapsible">
         <div class="mx-top-box">
-         <div class="mx-title" id="smallvan">Two XL - Luton Vans</div>
+         <div class="mx-title" id="smallvan">7.5 lorry Vans</div>
          <div class="mx-van-inner-box">
              <div class="van-img">
                  <img src="https://jjdvans.com/static/xl-luton-2-0a3173d44776b234b6d0bdfab2bd68fc.png"/>
@@ -28,19 +28,19 @@
         <div class="_1l6esa8">Suitable for student move & 1 room move</div>
         <h4 class="_qxp73g">Choose for extra help</h4>
         <label>
-            <input id="driver15" data-v="No I will do it myself. Selfload" type="radio" name="driver">
+            <input id="driver15" checked data-v="No I will do it myself. Selfload" type="radio" name="driver_allll">
              No I will do it myself. Selfload
         </label>
         <label>
-         <input id="driver16" data-v="Driver help. I will help the driver with heavy item(s)" type="radio" name="driver">
+         <input id="driver16" data-v="Driver help. I will help the driver with heavy item(s)" type="radio" name="driver_allll">
          Driver help. I will help the driver with heavy item(s)
        </label>
        <label>
-        <input id="driver17" data-v="2 Men Team. I don’t need to lift a finger" type="radio" name="driver">
+        <input id="driver17" data-v="2 Men Team. I don’t need to lift a finger" type="radio" name="driver_allll">
         2 Men Team. I don’t need to lift a finger
       </label>
       <label>
-        <input id="driver18" data-v="3 Men Team. I am the boss, bring me the red carpet" type="radio" name="driver">
+        <input id="driver18" data-v="3 Men Team. I am the boss, bring me the red carpet" type="radio" name="driver_allll">
         3 Men Team. I am the boss, bring me the red carpet
       </label>
       <form action="{{url('/checkout')}}" method="POST">
@@ -48,9 +48,10 @@
          <input type="hidden" id="bprice5" name="price">
          <input type="hidden" id="bpickup5" name="pickup" value="{{$pik}}">
          <input type="hidden" id="bdropoff5" name="dropoff" value="{{$drop}}">
+         <input type="hidden" id="additionalprice" name="additionalprice" value="{{$additionalstop}}">
          <input type="hidden" id="bmiles5" name="miles" value="{{$dist}}">
          <input type="hidden" id="extrahelp5" name="extrahelp">
-         <input type="hidden" id="vanname" name="vanname" value="Two XL - Luton Vans">
+         <input type="hidden" id="vanname" name="vanname" value="Two XL Luton Vans">
          <div class="_6dbxa6"><button class="MuiButtonBase-root MuiButton-root MuiButton-contained _1fpvwjc MuiButton-containedPrimary" tabindex="0" type="submit" style="height: 48px; width: 100%;"><span class="MuiButton-label">Select deal</span><span class="MuiTouchRipple-root"></span></button></div>
      </form>
      </div>    
@@ -62,17 +63,26 @@
    $(document).ready(function(){
       var price={{$twoxllutonvans}};
       let final=price;
+      
+      if($("#driver15").attr('checked',true)){
+        let v=$("#driver15").data('v');
+        final=price?price+{{$twoxlselfload}}:final;
+           $("#price5").html(`£ ${final}`);
+           $("#bprice5").val(final);
+        $("#extrahelp5").val(v);
+      }
       $("#driver15").click(function(){
         let v=$(this).data('v');
         $("#extrahelp5").val(v);
-           final=price;
+           final=price?price+{{$twoxlselfload}}:final;
            $("#price5").html(`£ ${final}`);
            $("#bprice5").val(final);
       });
       $("#driver16").click(function(){
         let v=$(this).data('v');
         $("#extrahelp5").val(v);
-        $("#price5").html(`£ ${price}`);
+        var final=final=price?price+{{$twoxlvandriverhelpprice}}:final;
+        $("#price5").html(`£ ${final}`);
         $("#bprice5").val(final);
       });
       $("#driver17").click(function(){

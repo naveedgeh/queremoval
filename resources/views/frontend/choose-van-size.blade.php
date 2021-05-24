@@ -14,6 +14,10 @@
 
 @endsection
 @section('jquery')
-
+<script>
+// onload=function(){
+//     location.reload();
+//     }
+</script>
 @stack('javascript')
 @endsection

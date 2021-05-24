@@ -8,6 +8,8 @@ use Stripe;
 use \App\Mail\SendMail;
 use \App\Mail\ClientMail;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Priceadd;
+use App\Models\AdditionalPrice;
 class CheckoutController extends Controller
 {
     private $booking;
@@ -16,16 +18,21 @@ class CheckoutController extends Controller
         $this->booking=new Booking();
     }
     public function Checkout(Request $request){
-
+        // dd($request->all());
+            //dd(str_replace(' ','',$request->vanname));
         $hiddenfields=$request->all();
-
+        $priceaddtable=Priceadd::where('vanname','=',str_replace(' ','',$request->vanname))->get();
+        $addtionalprice=AdditionalPrice::get()->first();
+     
+        //dd($priceaddtable);
         //dd($hiddenfields);
-        return view('frontend.checkouts',['hiddenfielsdata'=>$hiddenfields]);
+        return view('frontend.checkouts',['hiddenfielsdata'=>$hiddenfields,'valpricetable'=>$priceaddtable,"additionalprice"=>$addtionalprice]);
     }
    public function Success(){
        return view('frontend.success');
    }
     public function ConfirmStor(Request $request){
+        
         \Stripe\Stripe::setApiKey(config('stripekey')['stripekey_one']);
         $token=$request->stripeToken;
         $email=$request->stripeEmail;
@@ -82,9 +89,9 @@ class CheckoutController extends Controller
                 'phonenumber'=>$request->input('phonenumber'),
                 'pickup'=>$request->input('pickup'),
                 'dropoff'=>$request->input('dropoff'),
-                'miles'=>$request->input('miles'),
+                'miles'=>(int)$request->input('miles'),
                 'vanname'=>$request->input('vanname'),
-                'price'=>$request->input('price'),
+                'price'=>(int)$request->input('price'),
                 'extrahelp'=>$request->input('extrahelp'),
                 'inventry'=>join(',',$request->input('inventry')),
                 'passenger'=>$request->input('passenger'),

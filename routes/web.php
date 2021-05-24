@@ -10,6 +10,7 @@ use App\Http\Controllers\MapIntigrationController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\OtherPageController;
 use App\Http\Controllers\SendMailController;
+use App\Http\Controllers\ViewDetails;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,8 +50,16 @@ Route::post('/admin',[AdminLoginController::class,'Login']);
 Route::middleware(['naveed_group'])->group(function(){
     Route::get('/admin/dashboard',[DashboardController::class,'Dashboard'])->name('dashbaord');
     Route::get('/admin/priceadd',[DashboardController::class,'Priceadd'])->name('priceadd');
+    Route::get('/admin/Addpriceadd',[DashboardController::class,'AddPriceadd'])->name('addpriceadd');
+    Route::get('/admin/addpriceaddfull',[DashboardController::class,'AddPriceaddFull'])->name('addpriceaddfull');
+    Route::get('/admin/viewdetails',[ViewDetails::class,'Index'])->name('ViewDetails');
+    Route::post('/admin/AddPriceadditional',[DashboardController::class,'AddPriceadditional'])->name('newaddpriceadd');
+    Route::post('/admin/AddPriceadditional',[DashboardController::class,'AddPriceadditional'])->name('newaddpriceaddfull');
     Route::post('/admin/priceadd',[DashboardController::class,'AddPrice'])->name('AddPrice');
     Route::get('/admin/delprice/{id}',[DashboardController::class,'delPrice'])->name('delPrice');
+    Route::get('/admin/deladdotionalprice/{id}',[DashboardController::class,'deladdotionalprice']);
+    Route::get('/admin/Editprice/{id}',[ViewDetails::class,'EditPrice'])->name('EditPrice');
+    Route::post('/admin/Updateprice',[ViewDetails::class,'UpdatePrice'])->name('UpdatePrice');
 });
 Route::get('/logout',[AdminLoginController::class,'Logout']);
 // ================================Services Routs=================

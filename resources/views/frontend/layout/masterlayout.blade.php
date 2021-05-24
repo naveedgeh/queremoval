@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
 <head>
-
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	
+	<meta http-equiv="content-type" content="text/html" charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
 	<meta name="author" content="SemiColonWeb" />
 
@@ -150,7 +150,7 @@
 										</div> --}}
 
 
-										<div class="col-sm-12 input-group form-group">
+									<div class="col-sm-12 input-group form-group">
 											
 										<div class="input-group-prepend">
 												<span class="input-group-text bg-color text-white"><i class="icon-truck1"></i></span>
@@ -161,16 +161,32 @@
 											<div id="picklocation">
 												
 											</div>
-											</div>
+									</div>
 											<span class="error"> 
 												@error('pickup')
 													{{$message}}
 												@enderror
 											</span>
+											{{-- additional address --}}
 											
-												<div class="col-sm-12 input-group form-group">
+											
+												<div class="col-sm-12  form-group " id="addintoalstops">
 													
-												<div class="input-group-prepend">
+													
+													 
+												</div>
+													  <span class="error"> 
+														  @error('dropoff')
+															  {{$message}}
+														  @enderror
+										  			  </span>
+											
+												
+										
+												  {{-- end additional address --}}
+										<div class="col-sm-12 input-group form-group">
+													
+										  <div class="input-group-prepend">
 												<span class="input-group-text bg-color text-white"><i class="icon-truck1"></i></span>
 											</div>
 											<input type="text" name="dropoff" id="droplocation" placeholder="Drop off Location" class="form-control location"/>
@@ -185,6 +201,7 @@
 												@enderror
 											</span>
 										<div class="col-12">
+											<button id="addstop" class="btn bg-color text-white font-weight-medium btn-block py-2 mt-2">+ Add Addotional Stop</button>
 											<input type="submit" name="home-moving-form-submit" id="findprice" class="btn bg-color text-white font-weight-medium btn-block py-2 mt-2" value="Find Prices">
 										</div>
 

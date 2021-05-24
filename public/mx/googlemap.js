@@ -1,7 +1,4 @@
 // This example creates a 2-pixel-wide red polyline showing the path of
-// the first trans-Pacific flight between Oakland, CA, and Brisbane,
-// Australia which was made by Charles Kingsford Smith.
-
 function initMap() {
   $("#map").css({ "height": "427px", "width": "100%" });
   var geocoder = new google.maps.Geocoder();
@@ -11,7 +8,7 @@ function initMap() {
       var location = $(this).val()
       locationss.push(location);
   });
-
+ console.log(locationss);
   locationss.map((a,index)=>{
     let latlng={};
     geocoder.geocode({
@@ -27,7 +24,7 @@ function initMap() {
           latlng.lng=longitude;
           flightPlanCoordinates.push(latlng);
           var options = {
-            zoom: 5,
+            zoom: 6,
             center: {
                 lat: flightPlanCoordinates[index].lat,
                 lng: flightPlanCoordinates[index].lng

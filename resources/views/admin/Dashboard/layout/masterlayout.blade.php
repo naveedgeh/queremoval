@@ -22,6 +22,7 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('assets/demo/demo.css" rel="stylesheet')}}" />
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+  <link href="{{asset('adminresource/assets/css/admin.css')}}" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -126,6 +127,9 @@
   <script src="{{asset('adminresource/assets/js/paper-dashboard.min.js?v=2.0.1')}}" type="text/javascript"></script>
  
   <script src="{{asset('adminresource/assets/demo/demo.js')}}"></script>
+  @section('scriptmain')
+      
+  @show
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
@@ -136,8 +140,9 @@
  <script>
   $(document).ready( function () {
     $('#myTable').DataTable();
-} );
+});
  </script>
+
 </body>
 
 </html>

@@ -20,6 +20,11 @@ class CreatePriceaddsTable extends Migration
             $table->string('driverhelp');
             $table->string('2menprice');
             $table->string('3menprice');
+            $table->string('2menhalfhourprice');
+            $table->string('3menhalfhourprice');
+            $table->string('driverhelphalfhourprice');
+            $table->string('floorpricewithoutleft');
+            $table->string('floorpricewithleft');
             $table->timestamps();
         });
     }

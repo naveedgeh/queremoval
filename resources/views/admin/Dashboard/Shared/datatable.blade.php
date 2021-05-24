@@ -8,6 +8,11 @@
                 <th>Driver help price</th>
                 <th>Two Men Price</th>
                 <th>Three Men Price</th>
+                {{-- <th> Two Men half Price</th>
+                <th> Three Men half Price</th>
+                <th> Driver help half Price</th>
+                <th>Floor Without left Price</th>
+                <th>Floor With left Price</th> --}}
                 <th>Action</th>
             </tr>
         </thead>

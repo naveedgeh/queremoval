@@ -28,19 +28,19 @@
         <div class="_1l6esa8">Suitable for student move & 1 room move</div>
         <h4 class="_qxp73g">Choose for extra help</h4>
         <label>
-            <input id="driver7" data-v="No I will do it myself. Selfload" type="radio" name="driver">
+            <input id="driver7" checked data-v="No I will do it myself. Selfload" type="radio" name="driver_al">
              No I will do it myself. Selfload
         </label>
         <label>
-         <input id="driver8" data-v=" Driver help. I will help the driver with heavy item(s)" type="radio" name="driver">
+         <input id="driver8" data-v=" Driver help. I will help the driver with heavy item(s)" type="radio" name="driver_al">
          Driver help. I will help the driver with heavy item(s)
        </label>
        <label>
-        <input id="driver9" data-v=" 2 Men Team. I don’t need to lift a finger"  type="radio" name="driver">
+        <input id="driver9" data-v=" 2 Men Team. I don’t need to lift a finger"  type="radio" name="driver_al">
         2 Men Team. I don’t need to lift a finger
       </label>
       <label>
-        <input id="driver10" data-v="3 Men Team. I am the boss, bring me the red carpet" type="radio" name="driver">
+        <input id="driver10" data-v="3 Men Team. I am the boss, bring me the red carpet" type="radio" name="driver_al">
         3 Men Team. I am the boss, bring me the red carpet
       </label>
       <form action="{{url('/checkout')}}" method="post">
@@ -48,6 +48,7 @@
          <input type="hidden" id="bprice3" name="price">
          <input type="hidden" id="bpickup3" name="pickup" value="{{$pik}}">
          <input type="hidden" id="bdropoff3" name="dropoff" value="{{$drop}}">
+         <input type="hidden" id="additionalprice" name="additionalprice" value="{{$additionalstop}}">
          <input type="hidden" id="bmiles3" name="miles" value="{{$dist}}">
          <input type="hidden" id="extrahelp3" name="extrahelp">
          <input type="hidden" id="vanname" name="vanname" value="Large Van">
@@ -62,16 +63,48 @@
    $(document).ready(function(){
       var price={{$largevan}};
       let final=price;
+      if($("#driver7").attr('checked',true)){
+        let v=$("#driver7").data('v');
+        final=price?price+{{$lselfload}}:final;
+           $("#price3").html(`£ ${final}`);
+           $("#bprice3").val(final);
+        $("#extrahelp3").val(v);
+      }
+      // if($("#driver8").attr('checked',true)){
+      //   let v=$("#driver8").data('v');
+      //    final=final=price?price+{{$lvandriverhelpprice}}:final;
+      //   $("#price3").html(`£ ${final}`);
+      //   $("#bprice3").val(final);
+      //   $("#extrahelp3").val(v);
+      // }
+      // dddddddd
+      //  if($("#driver9").attr('checked',true)){
+      //   let v=$("#driver9").data('v');
+      //   let pp={{$lvantwomenprice}};
+      //   final=final=price?price+pp:final;
+      //   $("#price3").html(`£ ${final<price?price+pp:final}`);
+      //   $("#bprice3").val(final);
+      //   $("#extrahelp3").val(v);
+      // }
+      //////////////////////////////
+      // if($("#driver10").attr('checked',true)){
+      //   let v=$("#driver10").data('v');
+      //   final=final=price?price+{{$lvanthremenprice}}:final;
+      //   $("#price3").html(`£ ${final}`);
+      //   $("#bprice3").val(final);
+      //   $("#extrahelp3").val(v);
+      // }
       $("#driver7").click(function(){ 
         let v=$(this).data('v');
-           final=price;
+           final=price?price+{{$lselfload}}:final;
            $("#price3").html(`£ ${final}`);
            $("#bprice3").val(final);
            $("#extrahelp3").val(v);
       });
       $("#driver8").click(function(){
         let v=$(this).data('v');
-        $("#price3").html(`£ ${price}`);
+        var final=final=price?price+{{$lvandriverhelpprice}}:final;
+        $("#price3").html(`£ ${final}`);
         $("#bprice3").val(final);
         $("#extrahelp3").val(v);
       });

@@ -84,7 +84,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'queremovals@mobileandtechnology.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'quremovel@mobileandtechnology.com'),
         'name' => env('MAIL_FROM_NAME', 'Que Removals Booking'),
     ],
 

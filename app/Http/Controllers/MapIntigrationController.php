@@ -18,6 +18,11 @@ class MapIntigrationController extends Controller
             }
         $pickup=$request->input('pickup');
         $dropoff=$request->input('dropoff');
+        $addi1=$request->input('addi14');
+        
+        // $addi2=$request->input('addi2');
+        // $addi3=$request->input('addi3');
+        // $addi4=$request->input('addi4');
         $dist=0;
      
         $distance=Http::get(config('googlemap')['map_distance_api'].'&origins='.$pickup.'&destinations='.$dropoff.'&key='.config('googlemap')['map_apikey']);
@@ -34,8 +39,9 @@ class MapIntigrationController extends Controller
                 $dis=0;
             }
             //dd($distance);
-            $dist=round($dis*0.62137,2);
+            $dist=round((int)$dis*0.62137,2);
             //dd($dist);
-        return view('frontend.book',['pickup'=>$pickup,'dropoff'=>$dropoff,'distance'=>$dist]);
+            //'addi2'=>$addi2,'addi3'=>$addi3,'addi4'=>$addi4,
+        return view('frontend.book',['pickup'=>$pickup,'dropoff'=>$dropoff,'addi1'=>$addi1,'distance'=>$dist]);
     }
 }

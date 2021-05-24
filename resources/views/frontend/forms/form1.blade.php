@@ -1,4 +1,4 @@
-<div class="main-box">
+{{-- <div class="main-box">
     <div class="mx-van-box collapsible">
         <div class="mx-top-box">
          <div class="mx-title" id="smallvan">Small Van</div>
@@ -6,9 +6,7 @@
              <div class="van-img">
                  <img src="https://jjdvans.com/static/small-van-1a88c97be40aa9fdc31d54c4386eca77.png" class="img img-fluid mx-img"/>
              </div>
-             {{-- @php
-                 $price=143.99;
-             @endphp --}}
+          
              <div class="price-box">
                  <div class="mx-from"><span class="_17ddb46">From</span></div>
                  <div class="price" id="price"></div>
@@ -27,12 +25,14 @@
      <div class="content">
         <div class="_1l6esa8">Suitable for small items delivery like an armchair</div>
         <h4 class="_qxp73g">Choose for extra help</h4>
+        <label >
+        
         <label>
-            <input id="driver1" data-v="No I will do it myself. Selfload" type="radio" name="driver">
+            <input type="radio" id="driver1" data-v="No I will do it myself. Selfload"  value="No I will do it myself. Selfload" checked name="driver_">
              No I will do it myself. Selfload
         </label>
         <label>
-         <input id="driver2" data-v="Driver help. I will help the driver with heavy item(s)" type="radio" name="driver">
+         <input id="driver2"  data-v="Driver help. I will help the driver with heavy item(s)" type="radio" name="driver_">
          Driver help. I will help the driver with heavy item(s)
        </label>
        <form action="{{url('/checkout')}}" method="post">
@@ -40,13 +40,14 @@
          <input type="hidden" id="bprice" name="price">
          <input type="hidden" id="bpickup" name="pickup" value="{{$pik}}">
          <input type="hidden" id="bdropoff" name="dropoff" value="{{$drop}}">
+         <input type="hidden" id="additionalprice" name="additionalprice" value="{{$additionalstop}}">
          <input type="hidden" id="bmiles" name="miles" value="{{$dist}}">
          <input type="hidden" id="extrahelp" name="extrahelp">
          <input type="hidden" id="vanname" name="vanname" value="Small Van">
        <div class="_6dbxa6"><button class="MuiButtonBase-root MuiButton-root MuiButton-contained _1fpvwjc MuiButton-containedPrimary" tabindex="0" type="submit" style="height: 48px; width: 100%;"><span class="MuiButton-label">Select deal</span><span class="MuiTouchRipple-root"></span></button></div>
      </form>
      </div>    
- </div>
+ </div> --}}
  @once
   @push('javascript')
         <script>
@@ -66,6 +67,10 @@
    $(document).ready(function(){
       var price={{$smallvanprice}};
       let final=price;
+     if($("#driver1").attr('checked',true)){
+        let v=$("#driver1").val();
+        $("#extrahelp").val(v);
+      }
       $("#driver1").click(function(){
           let v=$(this).data('v');
            final=price;
@@ -76,8 +81,8 @@
       $("#driver2").click(function(){
         // $("#extrahelp").val();
         let v=$(this).data('v');
-        final=final
-        $("#price").html(`£ ${final<price?price:final}`);
+        var final=final=price?price+{{$smldriverhelpprice}}:final;
+        $("#price").html(`£ ${final}`);
         $("#bprice").val(final);
         $("#extrahelp").val(v);
       });

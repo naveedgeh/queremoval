@@ -41,6 +41,18 @@
 												
                                         </div>
                                         <br>
+                                       
+                                        <br>
+                                       @if ($addi1!="")
+                                       @foreach ($addi1 as $ad )
+                                        
+                                       <input type="hidden" id="" readonly name="" value="{{$ad}}" class="required sm-form-control location valid">
+                                      
+                                       
+                                        @endforeach
+                                        <input type="hidden" id="" readonly name="additinoal" value="on" class="required sm-form-control  valid">
+                                       @endif
+                                       
                                         <label>Dropoff Point <span style="font-size:9px;"></span></label>
                                         <input type="text" id="dropoff" readonly name="dropoff" value="{{$dropoff}}" class="required sm-form-control location valid">
                                         <div id="picklocationbooking2">
@@ -53,6 +65,7 @@
                                      <button style="width:100%;" class="button button-3d m-0" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Get Quote</button>
                                     <br><br>
                                         <p>Que removal Ltd is an expert in the removal industry. We don’t just provide a van and a driver; we provide an experienced removal expert who will ensure that everything runs smoothly for you.</p>
+                                        <b>If any of their addresses is part of congestion charge zone. Extra Charges Will be £27.50.</b>
             </form>
                                     </div>
             ​
